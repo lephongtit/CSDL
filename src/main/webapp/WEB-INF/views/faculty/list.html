@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/faculty/layout :: head">
+    <meta charset="UTF-8">
+    <title>List Faculty</title>
+</head>
+<body>
+<a href="/student">List Student</a>
+<a href="/create-faculty"> Create Faculty</a>
+<h1>List Faculty</h1>
+<table border="1" id="faculty">
+    <tr>
+        <th>ID</th>
+        <th>ID_Faculty</th>
+        <th>Name</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    <th:block th:each="faculty :${facultys}">
+        <tr>
+            <td th:text="${faculty.id}"></td>
+            <td th:text="${faculty.maKhoa}"></td>
+            <td th:text="${faculty.name}"></td>
+            <td><a th:href="@{/edit-faculty/__${faculty.id}__}">Edit</a></td>
+            <td><a th:href="@{/delete-faculty/__${faculty.id}__}">Delete</a></td>
+        </tr>
+    </th:block>
+</table>
+<footer th:replace="/faculty/layout :: footer"></footer>
+
+</body>
+</html>

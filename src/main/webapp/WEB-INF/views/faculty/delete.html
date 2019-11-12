@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/faculty/layout :: head">
+    <meta charset="UTF-8">
+    <title>Delete Faculty</title>
+</head>
+<body>
+<h1>Delete Faculty</h1>
+<h2>Are you sure?</h2>
+<p>
+    <a href="/facultys">Department list</a>
+</p>
+<th:block th:if="${students.size()>0}">
+    <p style="color: red;">Da co sinh vien. Ban co chac muon xoa khong?</p>
+</th:block>
+<form th:action="@{/delete-faculty}" th:object="${faculty}" method="post">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table border="1" id="faculty">
+        <tr>
+            <td>ID_Faculty:</td>
+            <td th:text="${faculty.maKhoa}"></td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td th:text="${faculty.name}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Delete Faculty"></td>
+        </tr>
+    </table>
+    <footer th:replace="/faculty/layout :: footer"></footer>
+
+</form>
+</body>
+</html>

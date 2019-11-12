@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/faculty/layout :: head">
+    <meta charset="UTF-8">
+    <title>Edit Faculty</title>
+</head>
+<body>
+<h1>Edit Faculty</h1>
+<p>
+    <a href="/facultys">Faculty List</a>
+</p>
+<th:block th:if="${message}">
+    <p th:text="${message}"></p>
+</th:block>
+<form th:action="@{/edit-faculty}" th:object="${faculty}" method="post" enctype="multipart/form-data">
+    <table border="1" id="faculty">
+        <tr>
+            <td>ID:</td>
+            <td><input type="text" th:field="*{id}"/></td>
+        </tr>
+        <tr>
+            <td>ID_Faculty:</td>
+            <td><input type="text" th:field="*{maKhoa}"/></td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" th:field="*{name}"/></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Update Faculty"></td>
+        </tr>
+    </table>
+    <footer th:replace="/faculty/layout :: footer"></footer>
+
+</form>
+</body>
+</html>

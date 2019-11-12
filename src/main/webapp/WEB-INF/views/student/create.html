@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org":>
+<head th:replace="/student/layout :: head">
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Create Student</h1>
+<p>
+    <a href="/student">List Student</a>
+</p>
+<form th:action="@{/save-student}" th:object="${studentForm}" method="post" enctype="multipart/form-data">
+    <table>
+        <tr>
+            <td>ID_Student</td>
+            <td><input th:type="text" th:field="*{maSV}"></td>
+        </tr>
+        <tr>
+            <td>Name</td>
+            <td><input th:type="text" th:field="*{name}"></td>
+        </tr>
+        <tr>
+            <td>BirthDate</td>
+            <td><input th:type="date" th:field="*{birthDate}"></td>
+        </tr>
+        <tr>
+            <td>Gender</td>
+            <td><input th:type="text" th:field="*{gender}"></td>
+        </tr>
+        <tr>
+            <td>Avatar</td>
+            <td><input th:type="file" th:field="*{avatar}"></td>
+        </tr>
+        <tr>
+            <td>Faculty</td>
+            <td>
+                <select th:field="*{faculty}">
+                    <option th:each="d : ${facultys}" th:value="${d.id}" th:text="${d.name}"></option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input th:type="submit" value="Create Student"></td>
+        </tr>
+    </table>
+
+</form>
+<footer th:replace="/student/layout :: footer"></footer>
+</body>
+</html>

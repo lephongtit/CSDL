@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="/student/layout :: head">
+    <meta charset="UTF-8">
+    <title>Delete Student</title>
+</head>
+<body>
+<h1>Delete Student</h1>
+<h2>Are you sure?</h2>
+<p>
+    <a href="/student">Student list</a>
+</p>
+<div id="form">
+<form th:action="@{/delete-student}" th:object="${student}" method="post" enctype="multipart/form-data">
+    <input th:type="hidden" name="id" th:field="*{id}">
+    <table>
+        <tr>
+            <td>ID_Student:</td>
+            <td th:text="${student.maSV}"></td>
+        </tr>
+        <tr>
+            <td>Name:</td>
+            <td th:text="${student.name}"></td>
+        </tr>
+        <tr>
+            <td>BirthDate:</td>
+            <td th:text="${student.birthDate}"></td>
+        </tr>
+        <tr>
+            <td>Gender:</td>
+            <td th:text="${student.gender}"></td>
+        </tr>
+        <tr>
+            <td>Avatar:</td>
+            <td th:text="${student.avatar}"></td>
+            <td><img width="150px" height="150px" th:src="@{'/i/' + ${student.avatar}}"></td>
+        </tr>
+        <tr>
+            <td>Faculty: </td>
+            <td th:text="${student.faculty.name}"></td>
+        </tr>
+        <tr>
+            <td></td>
+            <td><input type="submit" value="Delete Student"></td>
+        </tr>
+    </table>
+
+</form>
+</div>
+<footer th:replace="/student/layout :: footer"></footer>
+</body>
+</html>
